@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src='http://code.jquery.com/jquery-latest.js'></script>
+        <title>Authentication form</title>
+        <style>
+            .container {
+                height: 100vh;
+            }
+            #form-container {
+                margin-top: 30vh;
+                color: white;
+            }
+            #btn {
+                background-color: rgb(240, 29, 177);
+            }
+            p {
+                color: grey;
+            }
+            a {
+                color: white;
+            }
+            #login {
+                background-color: transparent;
+                background-image: url(https://psv4.userapi.com/c848332/u81535803/docs/d2/e630c33642bd/icons8-polzovatel-32.png?extra=UbeEMnYZWPPLubTha3ZGsmRS5A1vVwbO83RmlNbrfy2J6NB2a1mzXuJ68O1fdxZIK9SyV3VQ9fwoRksG2BGtOyRD6sSyTbDiVEM1o-6ZBm5gYTFruDizWZewKijnbgm57SdkrAmrTS2bkhx0yxtodXY);
+                background-repeat: no-repeat;
+                outline: none;
+                padding-left: 35px;
+                color: white;
+            }
+            #password {
+                background-color: transparent;
+                background-image: url(https://psv4.userapi.com/c848036/u81535803/docs/d14/4356fdf3868d/icons8-zamok-30.png?extra=Vf2E1Vs3k1EtdpwNDuFMfIRdJpasQjJwtQJcq2os_aVMiWuJ5lK2i1IUdIujpANi6oLZK0VfG8iX_J5Gb-djU-kHkSErt1Wls-GHciYWkC7Adkd8p3W255kM875hc3YFDne6UcqGbY0wiUeZz8cDqNw);
+                background-repeat: no-repeat;
+                outline: none;
+                padding-left: 35px;
+                color: white;
+            }
+            
+        </style>
+    </head>
+   
+    <body class="text-center bg-dark">
+        <div class="container col-md-4 ">
+            <div id="form-container" class="d-flex flex-column align-items-center">
+                <form class="form-signin center-block">
+                    <input id="login" name="login" class="form-control mt-2 mb-3" type="text" placeholder="Логин">
+                    <input id="password" name="password" class="form-control mb-3 bg-dark" type="password" placeholder="******">
+                    <button id ="btn" class="btn btn-primary btn-lg btn-block mb-4" type="submit">войти</button>
+                </form>
+                <p>Нет аккаунта? <a href="reg.html">Регистрация <img src="https://psv4.userapi.com/c848036/u81535803/docs/d7/0eacb8d04335/icons8-strelka-16.png?extra=Vd-PmQLXrT1ePyMK1_GshW_yyuAS-9zWkLx1KDXGwODB-R9e13zgpsH4EaEKGGAEOSl93g4uf-IvHNKuedT6BoYxrJlb5WEL7F4V7NN34tlMSm6VvJ-J9z67uZDd6mImwHZjRrhHj8pwwWVKIZF2i0E"></a></p>
+            </div>
+        </div>
+        
+        
+    </body>
+    <script>
+            $(function() {
+                $('#btn').click(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: 'handler.php',
+                        type: 'POST',
+                        data: $('form').serialize(),
+                        success: function(response) {
+                            if (response == 'Вы вошли') {
+                                $("#form-container").html(response);
+                            } else {
+                                $("#form-container").html(response);
+                            }
+                        }
+                    });
+                })
+                
+            });
+        </script>
+</html>
